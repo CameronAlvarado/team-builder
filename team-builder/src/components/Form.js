@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Form = props => {
   const [data, setData] = useState({ name: "", email: "", role: "" });
@@ -15,6 +15,14 @@ const Form = props => {
     props.addNewMember(newMember);
     setData({ name: "", email: "", role: "" });
   };
+
+  // useEffect(() => {
+  //   const editMember = props.memberToEdit();
+  //   return () => {
+  //     editMember.submitForm();
+  //   };
+  // });
+
   return (
     <form onSubmit={submitForm} className="form">
       <label htmlFor="title">Name</label>
