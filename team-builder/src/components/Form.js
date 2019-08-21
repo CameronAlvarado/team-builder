@@ -3,22 +3,20 @@ import React, { useState } from "react";
 const Form = props => {
   const [data, setData] = useState({ name: "", email: "", role: "" });
   const changeHandler = event => {
-    //computed properties
     console.log(event.target.value);
     setData({ ...data, [event.target.name]: event.target.value });
-    console.log(event.target.value);
   };
-//   const submitForm = event => {
-//     event.preventDefault();
-//     const newMember = {
-//       ...data,
-//       id: Date.now()
-//     };
-//     props.addNewNote(newNote);
-//     setData({ name: "", email: "", role: "" });
-//   };
+  const submitForm = event => {
+    event.preventDefault();
+    const newMember = {
+      ...data,
+      id: Date.now()
+    };
+    props.addNewMember(newMember);
+    setData({ name: "", email: "", role: "" });
+  };
   return (
-    <form/* onSubmit={submitForm}*/ className="form">
+    <form onSubmit={submitForm} className="form">
       <label htmlFor="title">Name</label>
       <input
         name="name"
@@ -41,7 +39,7 @@ const Form = props => {
         onChange={changeHandler}
       />
       <br></br>
-      <button type="submit">Add note</button>
+      <button type="submit">Add Member</button>
     </form>
   );
 };
